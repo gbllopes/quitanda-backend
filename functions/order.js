@@ -118,6 +118,13 @@ Parse.Cloud.define("get-order-items", async (req) => {
   });
 });
 
+Parse.Cloud.define("webhook", async (req) => {
+  if (req.user == null) throw "INVALID_USER";
+  if (req.user.id != process.env.AWS_USER_ID) throw "INVALID_USER";
+
+  return "Hello World!";
+});
+
 async function createCharge(dueSeconds, cpf, fullname, price) {
   let body = {
     calendario: {
