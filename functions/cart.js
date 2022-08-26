@@ -1,6 +1,7 @@
 const product = require("./product");
 const Product = Parse.Object.extend("Product");
 const CartItem = Parse.Object.extend("CartItem");
+
 Parse.Cloud.define("add-item-to-cart", async (req) => {
   if (req.user == null) throw "INVALID_USER";
   if (req.params.productId == null) throw "INVALID_PRODUCT";
